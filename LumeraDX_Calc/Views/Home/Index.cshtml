@@ -1,0 +1,28 @@
+﻿@model LumeraDX_Calc.Models.HomeViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Calculator Page</h1>
+</div>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <form>
+            <div class="col-md-3">
+                @Html.DropDownListFor(m => m.SelectedOperandOne, new SelectList(LumeraDX_Calc.Models.HomeViewModel.OperandOneList), new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                @Html.DropDownListFor(m => m.SelectedOperation, new SelectList(LumeraDX_Calc.Models.HomeViewModel.Operations, "Text", "Value"), new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                @Html.DropDownListFor(m => m.SelectedOperandTwo, new SelectList(LumeraDX_Calc.Models.HomeViewModel.OperandTwoList), new { @class = "form-control" })
+            </div>
+            <input type="submit" class="btn btn-primary btn-lg" />
+        </form>
+    </div>
+    <hr />
+    <h1>@Model.ResultString</h1>
+}
